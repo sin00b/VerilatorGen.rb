@@ -69,7 +69,7 @@ endmodule // goo
 $ cat test.rb
 require "./verilator"
 
-top = Verilator::Vfoo.new
+top = Verilator::Vtest.new
 (0..10).each do |i|
   clk = i % 2
   top.clk = clk
