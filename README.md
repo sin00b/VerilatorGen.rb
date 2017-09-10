@@ -23,8 +23,8 @@ Makefile  VerilatorGen.rb  obj_dir  test.v  verilator.i  verilator.so
 ## Writing test bench
 
 Notes:
-* you have to add /*verilator public*/ direction to the internal signals in modules;
-* only top module ports can be accessed without /*verilator public*/ direction.
+* You have to add /\*verilator public\*/ direction to the internal signals in modules.
+* Only top module ports can be accessed without /*verilator public*/ direction.
 
 ```
 $ cat test.v
