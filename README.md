@@ -14,9 +14,18 @@ for Ruby.
 $ ls
 VerilatorGen.rb  test.v
 $ ruby VerilatorGen.rb -cc  test.v  ### command options are same as those for verilator. generates Makefile, obj_dir/, verilator.i
+```
+
+```
 $ ls
 Makefile  VerilatorGen.rb  obj_dir  test.v  verilator.i
+```
+
+```
 $ make
+```
+
+```
 $ ls
 Makefile  VerilatorGen.rb  obj_dir  test.v  verilator.i  verilator.so
 ```
@@ -63,6 +72,7 @@ always @(posedge clk) begin
    end
 endmodule // goo
 ```
+
 ```
 $ cat test.rb
 require "./verilator"
@@ -75,6 +85,7 @@ top = Verilator::Vfoo.new
   puts "clk: #{clk} / top.foo.o: #{top.foo.o} / top.foo.goo1.bar #{top.foo.goo1.bar} / top.foo.goo1.o #{top.foo.goo1.o}"
 end
 ```
+
 ```
 $ ruby test.rb
 clk: 0 / top.foo.o: 0 / top.foo.goo1.bar 1 / top.foo.goo1.o 0
