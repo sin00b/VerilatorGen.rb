@@ -24,8 +24,8 @@ Makefile  VerilatorGen.rb  obj_dir  test.v  verilator.i  verilator.so
 ## Running test bench
 
 Notes:
-* You have to add /\*verilator public\*/ direction to the internal signals in modules.
-* Only top module ports can be accessed without /*verilator public*/ direction.
+* You have to add /\*verilator public\*/ directive to the internal signals in modules.
+* Only top module ports can be accessed without /*verilator public*/ directive.
 
 ```
 $ cat test.v
@@ -50,7 +50,7 @@ endmodule // foo
 
 module goo(clk,o);
    input  wire        clk;
-   output wire [31:0] o/* verilator public */; // this direction is needed!
+   output wire [31:0] o/* verilator public */; // this directive is needed!
 
    reg [31:0] 	    bar/* verilator public */;
 
