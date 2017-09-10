@@ -62,7 +62,8 @@ always @(posedge clk) begin
    o = bar;
    end
 endmodule // goo
-
+```
+```
 $ cat test.rb
 require "./verilator"
 
@@ -73,7 +74,8 @@ top = Verilator::Vfoo.new
   top.eval
   puts "clk: #{clk} / top.foo.o: #{top.foo.o} / top.foo.goo1.bar #{top.foo.goo1.bar} / top.foo.goo1.o #{top.foo.goo1.o}"
 end
-
+```
+```
 $ ruby test.rb
 clk: 0 / top.foo.o: 0 / top.foo.goo1.bar 1 / top.foo.goo1.o 0
 clk: 1 / top.foo.o: 1 / top.foo.goo1.bar 2 / top.foo.goo1.o 2
