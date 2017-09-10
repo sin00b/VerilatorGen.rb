@@ -8,7 +8,7 @@ for Ruby.
 * Ruby
 * swig
 
-## Usage
+## Preparation (generating verilator.so)
 
 ```shell
 $ ls
@@ -19,12 +19,13 @@ Makefile  VerilatorGen.rb  obj_dir  test.v  verilator.i
 $ make
 $ ls
 Makefile  VerilatorGen.rb  obj_dir  test.v  verilator.i  verilator.so
+
 ```
-## Writing test bench
+## Running test bench
 
 Notes:
-* You have to add /\*verilator public\*/ direction to the internal signals in modules.
-* Only top module ports can be accessed without /*verilator public*/ direction.
+* You have to add /\*verilator public\*/ directive to the internal signals in modules.
+* Only top module ports can be accessed without /*verilator public*/ directive.
 
 ```
 $ cat test.v
@@ -49,7 +50,7 @@ endmodule // foo
 
 module goo(clk,o);
    input  wire        clk;
-   output wire [31:0] o/* verilator public */; // this direction is needed!
+   output wire [31:0] o/* verilator public */; // this directive is needed!
 
    reg [31:0] 	    bar/* verilator public */;
 
@@ -62,7 +63,9 @@ always @(posedge clk) begin
    o = bar;
    end
 endmodule // goo
+```
 
+```
 $ cat test.rb
 require "./verilator"
 
@@ -73,7 +76,9 @@ top = Verilator::Vfoo.new
   top.eval
   puts "clk: #{clk} / top.foo.o: #{top.foo.o} / top.foo.goo1.bar #{top.foo.goo1.bar} / top.foo.goo1.o #{top.foo.goo1.o}"
 end
+```
 
+```
 $ ruby test.rb
 clk: 0 / top.foo.o: 0 / top.foo.goo1.bar 1 / top.foo.goo1.o 0
 clk: 1 / top.foo.o: 1 / top.foo.goo1.bar 2 / top.foo.goo1.o 2
