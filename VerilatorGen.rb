@@ -15,6 +15,9 @@ Dir.glob(OBJ_DIR + "/*.mk").each do |mk|
   vmkfile = "#{File.basename(mk)}" if mk !~ /_classes\.mk$/
 end
 
+vmkfile = vmkfile.to_s
+top_mod = vmkfile.gsub(/^V/, "").gsub(/\.mk/, "")
+
 Dir.chdir(OBJ_DIR)
 system("CPPFLAGS=\"-fPIC #{OPT_FLAG}\" make -f #{vmkfile}")
 Dir.chdir(ORG_PATH)
@@ -58,7 +61,7 @@ fp.close
 
 $libs += " -lstdc++ "
 
-$objs = ["#{VERILATOR_ROOT}/include/verilated.cpp", "#{OBJ_DIR}/verilator.cpp", "#{OBJ_DIR}/Vfoo__ALL.a"]
+$objs = ["#{VERILATOR_ROOT}/include/verilated.cpp", "#{OBJ_DIR}/verilator.cpp", "#{OBJ_DIR}/V#{top_mod}__ALL.a"]
 
 incdir_opt = " -I#{VERILATOR_ROOT}/include -I#{VERILATOR_ROOT}/include/vltstd" + " -I#{OBJ_DIR}"
 
