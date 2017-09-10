@@ -24,8 +24,8 @@ Makefile  VerilatorGen.rb  obj_dir  test.v  verilator.i  verilator.so
 ## Running test bench
 
 Notes:
-* You have to add /\*verilator public\*/ directive to the internal signals in modules.
-* Only top module ports can be accessed without /*verilator public*/ directive.
+* You have to add /\* verilator public \*/ directive to the internal signals in modules.
+* Only top module ports can be accessed without /\* verilator public \*/ directive.
 
 ```
 $ cat test.v
