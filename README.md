@@ -1,4 +1,4 @@
-# Verilator module generator for Ruby
+# Verilator extension generator for Ruby
 
 This is a quick & dirty script to generate
 [Verilator](https://www.veripool.org/projects/verilator/wiki/Intro) extension
@@ -13,7 +13,7 @@ for Ruby.
 ```shell
 $ ls
 VerilatorGen.rb  test.v
-$ ruby VerilatorGen.rb -cc --top-module foo *.v  ### command options are same as those for verilator. generates Makefile, obj_dir/, verilator.i
+$ ruby VerilatorGen.rb -cc  test.v  ### command options are same as those for verilator. generates Makefile, obj_dir/, verilator.i
 $ ls
 Makefile  VerilatorGen.rb  obj_dir  test.v  verilator.i
 $ make
