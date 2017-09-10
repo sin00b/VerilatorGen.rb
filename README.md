@@ -8,28 +8,20 @@ for Ruby.
 * Ruby
 * swig
 
-## Usage
+## Preparation (generating verilator.so)
 
 ```shell
 $ ls
 VerilatorGen.rb  test.v
 $ ruby VerilatorGen.rb -cc  test.v  ### command options are same as those for verilator. generates Makefile, obj_dir/, verilator.i
-```
-
-```
 $ ls
 Makefile  VerilatorGen.rb  obj_dir  test.v  verilator.i
-```
-
-```
 $ make
-```
-
-```
 $ ls
 Makefile  VerilatorGen.rb  obj_dir  test.v  verilator.i  verilator.so
+
 ```
-## Writing test bench
+## Running test bench
 
 Notes:
 * You have to add /\*verilator public\*/ direction to the internal signals in modules.
