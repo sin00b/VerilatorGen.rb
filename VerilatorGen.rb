@@ -43,6 +43,7 @@ swig_src = <<SWIG_RECIPE_END
 #include <ruby.h>
 %}
 
+%ignore _Vbit;
 %ignore _VERILATEDOS_H_;
 %ignore _VERILATED_H_;
 %ignore Verilated::getCommandArgs();
